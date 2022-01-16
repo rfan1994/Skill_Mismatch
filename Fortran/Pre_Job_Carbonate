@@ -31,10 +31,10 @@ mkdir -p $num
 # Calibrate: Copy
 
 num=1
-scp ~/Desktop/Skill_Mismatch/*.f90 fanrong@carbonate.uits.iu.edu:~/Documents/Skill_Mismatch/Calibration
-scp ~/Desktop/Skill_Mismatch/Calibration/* fanrong@carbonate.uits.iu.edu:~/Documents/Skill_Mismatch/Calibration
-scp ~/Desktop/'Skill_Mismatch Result'/Fortran/Calibration fanrong@carbonate.uits.iu.edu:~/Documents/$(date +%Y%m%d)/Calibrate/$num
-scp ~/Desktop/'Skill_Mismatch Result'/Fortran/Run_Job_Carbonate fanrong@carbonate.uits.iu.edu:~/Documents/$(date +%Y%m%d)
+scp ~/Desktop/Skill_Mismatch/Fortran/Model/*.f90 fanrong@carbonate.uits.iu.edu:~/Documents/Skill_Mismatch/Calibration
+scp ~/Desktop/Skill_Mismatch/Fortran/Model/Calibration/* fanrong@carbonate.uits.iu.edu:~/Documents/Skill_Mismatch/Calibration
+scp ~/Desktop/Skill_Mismatch/Fortran/Calibration fanrong@carbonate.uits.iu.edu:~/Documents/$(date +%Y%m%d)/Calibrate/$num
+scp ~/Desktop/Skill_Mismatch/Fortran/Run_Job_Carbonate fanrong@carbonate.uits.iu.edu:~/Documents/$(date +%Y%m%d)
 
 # ===============================================================================================
 # Calibrate: Compile

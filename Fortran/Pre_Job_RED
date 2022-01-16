@@ -14,8 +14,8 @@ cd Skill_Mismatch
 rm -r Calibration
 mkdir Calibration
 
-cp -f ~/thindrives/Desktop/Skill_Mismatch/*.f90 ~/Documents/Skill_Mismatch/Calibration
-cp -f ~/thindrives/Desktop/Skill_Mismatch/Calibration/* ~/Documents/Skill_Mismatch/Calibration
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Model/*.f90 ~/Documents/Skill_Mismatch/Calibration
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Model/Calibration/* ~/Documents/Skill_Mismatch/Calibration
 
 module load nlopt
 cd ~/Documents/Skill_Mismatch/Calibration
@@ -38,16 +38,16 @@ mkdir -p Calibrate
 cd Calibrate
 mkdir -p $num
 
-cp -f ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d)
-cp -f ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran/Calibration ~/Documents/$(date +%Y%m%d)/Calibrate/$num
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d)
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Calibration ~/Documents/$(date +%Y%m%d)/Calibrate/$num
 
 
 
 # ===============================================================================================
 # Calibrate: Export
 
-rm -r ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran/Calibrate
-cp -r ~/Documents/$(date +%Y%m%d)/Calibrate ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran
+rm -r ~/thindrives/Desktop/Skill_Mismatch/Fortran/Calibrate
+cp -r ~/Documents/$(date +%Y%m%d)/Calibrate ~/thindrives/Desktop/Skill_Mismatch/Fortran
 
 
 
@@ -61,8 +61,8 @@ cd Skill_Mismatch
 rm -r Simulation
 mkdir Simulation
 
-cp -f ~/thindrives/Desktop/Skill_Mismatch/*.f90 ~/Documents/Skill_Mismatch/Simulation
-cp -f ~/thindrives/Desktop/Skill_Mismatch/Simulation/* ~/Documents/Skill_Mismatch/Simulation
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Model/*.f90 ~/Documents/Skill_Mismatch/Simulation
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Model/Simulation/* ~/Documents/Skill_Mismatch/Simulation
 
 cd ~/Documents/Skill_Mismatch/Simulation
 make -f Makefile
@@ -77,15 +77,15 @@ mkdir -p $(date +%Y%m%d)
 cd $(date +%Y%m%d)
 mkdir -p Simulate
 
-cp -f ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d)
-cp -f ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran/Simulation ~/Documents/$(date +%Y%m%d)/Simulate
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Run_Job_RED ~/Documents/$(date +%Y%m%d)
+cp -f ~/thindrives/Desktop/Skill_Mismatch/Fortran/Simulation ~/Documents/$(date +%Y%m%d)/Simulate
 
 
 
 # ===============================================================================================
 # Simulate: Export
-rm -r ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran/Simulate
-cp -r ~/Documents/$(date +%Y%m%d)/Simulate ~/thindrives/Desktop/'Skill_Mismatch Result'/Fortran
+rm -r ~/thindrives/Desktop/Skill_Mismatch/Fortran/Simulate
+cp -r ~/Documents/$(date +%Y%m%d)/Simulate ~/thindrives/Desktop/Skill_Mismatch/Fortran
 
 
 
