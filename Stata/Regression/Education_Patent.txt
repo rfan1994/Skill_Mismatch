@@ -1,0 +1,15 @@
+	(1)	(2)	(3)	(4)	(5)	(6)
+VARIABLES	Education1	Patent1	Education1	SE1	Education1	RD1
+						
+L.Education1	0.526	-0.00935	0.686***	0.00249	4.986	-28.14
+	(5.492)	(4.477)	(0.242)	(0.376)	(26.02)	(161.3)
+L.Patent1	0.135	0.632				
+	(1.361)	(1.284)				
+L.SE1			0.0380	-0.0268		
+			(0.585)	(0.847)		
+L.RD1					-0.631	4.813
+					(7.124)	(44.33)
+						
+Observations	408	408	378	378	406	406
+Standard errors in parentheses						
+*** p<0.01, ** p<0.05, * p<0.1						

@@ -1,0 +1,46 @@
+#!/bin/bash
+# ===============================================================================================
+# Log in
+
+ssh fanrong@carbonate.uits.iu.edu
+ssh fanrong@bigred3.uits.iu.edu
+mv ~/Documents/* /N/slate/fanrong
+
+# ===============================================================================================
+# Calibrate: Mkdir
+
+num=1
+cd ~/Documents
+mkdir -p Skill_Mismatch
+cd Skill_Mismatch
+rm -r Calibration
+mkdir Calibration
+
+cd ~/Documents
+mkdir -p $(date +%Y%m%d)
+cd $(date +%Y%m%d)
+{
+echo '#!/bin/bash'
+echo 'export num='$num
+} > number
+mkdir -p Calibrate
+cd Calibrate
+mkdir -p $num
+
+# ===============================================================================================
+# Calibrate: Copy
+
+num=1
+scp ~/Desktop/Skill_Mismatch/*.f90 fanrong@carbonate.uits.iu.edu:~/Documents/Skill_Mismatch/Calibration
+scp ~/Desktop/Skill_Mismatch/Calibration/* fanrong@carbonate.uits.iu.edu:~/Documents/Skill_Mismatch/Calibration
+scp ~/Desktop/'Skill_Mismatch Result'/Fortran/Calibration fanrong@carbonate.uits.iu.edu:~/Documents/$(date +%Y%m%d)/Calibrate/$num
+scp ~/Desktop/'Skill_Mismatch Result'/Fortran/Run_Job_Carbonate fanrong@carbonate.uits.iu.edu:~/Documents/$(date +%Y%m%d)
+
+# ===============================================================================================
+# Calibrate: Compile
+
+module load nlopt
+cd ~/Documents/Skill_Mismatch/Calibration
+make -f Makefile
+cd ~/Documents/$(date +%Y%m%d)
+qsub Run_Job_Carbonate

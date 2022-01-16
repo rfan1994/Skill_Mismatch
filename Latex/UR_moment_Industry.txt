@@ -1,0 +1,15 @@
+    \hline     \hline 
+                                          Industry     &      mean(u)     &        st(u)     & st(u)/mean(u)    \\ 
+    \hline 
+     Mining, quarrying, and oil and gas extraction     &         5.46     &         2.78     &         0.51    \\ 
+                                      Construction     &         9.59     &         4.92     &         0.51    \\ 
+                                     Manufacturing     &         5.78     &         2.45     &         0.42    \\ 
+                        Wholesale and Retail Trade     &         6.02     &         1.72     &         0.29    \\ 
+                      Transportation and Utilities     &         5.19     &         1.81     &         0.35    \\ 
+                                       Information     &         5.51     &         2.01     &         0.37    \\ 
+                              Financial Activities     &         3.68     &         1.49     &         0.40    \\ 
+                Professional and Business Services     &         6.79     &         2.17     &         0.32    \\ 
+                     Education and Health Services     &         3.75     &         1.14     &         0.31    \\ 
+                           Leisure and Hospitality     &         8.34     &         2.07     &         0.25    \\ 
+                                    Other Services     &         5.36     &         1.70     &         0.32    \\ 
+    \hline 

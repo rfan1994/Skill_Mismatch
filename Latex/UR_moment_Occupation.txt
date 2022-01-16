@@ -1,0 +1,9 @@
+    \hline     \hline 
+                                        Occupation     &      mean(u)     &        st(u)     & st(u)/mean(u)    \\ 
+    \hline 
+             Management, Professional, and Related     &         2.90     &         0.96     &         0.33    \\ 
+                                          Service      &         6.90     &         1.75     &         0.25    \\ 
+                                  Sales and Office     &         5.59     &         1.71     &         0.31    \\ 
+  Natural Resources, Construction, and Maintenance     &         8.30     &         3.59     &         0.43    \\ 
+    Production, Transportation and Material Moving     &         7.51     &         2.62     &         0.35    \\ 
+    \hline 

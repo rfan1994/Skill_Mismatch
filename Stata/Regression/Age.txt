@@ -1,0 +1,16 @@
+	(1)	(2)
+VARIABLES	diff1	diff2
+		
+diff1_lag	0.779***	
+	(0.0312)	
+Time	-0.000343***	-0.000604***
+	(0.000121)	(0.000108)
+diff2_lag		0.497***
+		(0.0426)
+Constant	0.585***	0.569***
+	(0.1000)	(0.0695)
+		
+Observations	410	410
+R-squared	0.656	0.412
+Standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

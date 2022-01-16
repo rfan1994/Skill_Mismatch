@@ -1,0 +1,21 @@
+		(1)	(2)
+VARIABLES	LABELS	Unemployment rate	Unemployment volatility
+			
+Education	Skill	-9.069***	-1.712**
+		(1.277)	(0.686)
+Patent	Technology	-1.811	0.660
+		(1.318)	(0.603)
+UR_mean		0.870***	
+		(0.00537)	
+Production	Productivity	-1.432***	0.557
+		(0.504)	(0.675)
+Tech_Edu	Mismatch	4.589***	1.728**
+		(0.879)	(0.823)
+Constant	Constant	12.12***	2.044**
+		(2.021)	(0.954)
+			
+Observations		5,400	50
+R-squared		0.832	0.240
+Number of State		50	
+Standard errors in parentheses			
+*** p<0.01, ** p<0.05, * p<0.1			

@@ -1,0 +1,8 @@
+    \hline     \hline 
+                                         Education     &      mean(u)     &        st(u)     & st(u)/mean(u)    \\ 
+    \hline 
+                   Less than a High School Diploma     &         8.94     &         2.61     &         0.29    \\ 
+                             High School Graduates     &         5.58     &         1.88     &         0.34    \\ 
+                  Some College or Associate Degree     &         4.61     &         1.62     &         0.35    \\ 
+   College Graduates: Bachelor's Degree and Higher     &         2.74     &         0.85     &         0.31    \\ 
+    \hline 

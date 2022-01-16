@@ -1,0 +1,26 @@
+#!/bin/bash
+# bash ~/Documents/$(date +%Y%m%d)/Run_Job_RED
+
+# ===============================================================================================
+# Calibrate
+#
+echo -e "\e[1;94m $(date) \e[0m"
+module load nlopt
+cd ~/Documents/$(date +%Y%m%d)
+source number
+cd ~/Documents/$(date +%Y%m%d)/Calibrate/$num
+pwd
+~/Documents/Skill_Mismatch/Calibration/Calibration
+
+
+
+
+# ===============================================================================================
+# Simulate
+
+echo -e "\e[1;94m $(date) \e[0m"
+cd ~/Documents/$(date +%Y%m%d)/Simulate
+pwd
+~/Documents/Skill_Mismatch/Simulation/Simulation
+
+

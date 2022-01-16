@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#####  Constructed by HPC everywhere #####
+#PBS -M fanrong@iu.edu
+#PBS -l nodes=1:ppn=8,walltime=0:6:59:00
+#PBS -m abe
+#PBS -N Calibration_1
+#PBS -j oe
+
+######  Module commands #####
+module load nlopt
+
+######  Job commands go below this line #####
+cd ~/Documents/$(date +%Y%m%d)
+source number
+cd ~/Documents/$(date +%Y%m%d)/Calibrate/$num
+pwd
+~/Documents/Skill_Mismatch/Calibration/Calibration
+
