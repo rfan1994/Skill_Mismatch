@@ -4,10 +4,10 @@ global alpha_o alpha_u
 global lambda_a lambda_b phi_a phi_b 
 
 beta = 0.95; kappa = 0.2; b_u = 0.75; delta = 0.024;
-alpha_o = 20; alpha_u = 40; 
+alpha_o = 10; alpha_u = 20; 
 lambda_a = 5; lambda_b = 12; phi_a = 100; phi_b = 1;
 
-folder1 = '/Users/rongfan/Desktop/Skill_Mismatch Result/Fortran/';
+folder1 = '/Users/rongfan/Desktop/Skill_Mismatch/Fortran/';
 
 %% Plot1: f(a,b)
 FileName = fullfile(folder2,'Analytical1.png');
@@ -113,16 +113,16 @@ Omega = @(z) z*(kappa*H*lambda_a/(lambda_a-1)+(1-kappa)*Q*lambda_b/(lambda_b-1)-
               (1/(lambda_a-1)-2/lambda_a+1/(lambda_a+1)-...
                alpha_2_star(z)^(1-lambda_a)/(lambda_a-1)+2*alpha_2_star(z)^(-lambda_a)/lambda_a-alpha_2_star(z)^(-1-lambda_a)/(lambda_a+1));
 omega = Omega(1);
-Omega1 =  @(z) Omega(z)/omega-1;
+Omega1 =  @(z) log(Omega(z)/omega);
 f1 = fplot(Omega1,[0.8,1.2],'LineWidth',1);
 hold on;
 Omega = @(z) z*(kappa*H*lambda_a/(lambda_a-1)+(1-kappa)*Q*lambda_b/(lambda_b-1));
 omega = Omega(1);
-Omega2 =  @(z) Omega(z)/omega-1;
+Omega2 =  @(z) log(Omega(z)/omega);
 f2 = fplot(Omega2,[0.8,1.2],'LineWidth',1);
 ylabel('log deviation')
 xlabel('TFP')
-xticks(1); yticks([])
+xticks([0.8 1 1.2]); yticks([])
 legend([f1 f2], {'With mismatch','Without mismatch'},'location','best');
 
 title('Change of vacancy value');
@@ -139,14 +139,14 @@ alpha_1_star = @(z) (alpha_u+0.5*z*kappa-(z*alpha_u+(0.5*z*kappa)^2)^(1/2))/alph
 alpha_2_star = @(z) alpha_o/(alpha_o+0.5*z*(1-kappa)-(z*alpha_o+(0.5*z*(1-kappa))^2)^(1/2));
 M = @(z) (lambda_b*(alpha_2_star(z)*Q/H)^(-lambda_a)+lambda_a*(alpha_1_star(z)*Q/H)^lambda_a)/(lambda_a+lambda_b);
 m = M(1);
-M1 = @(z) M(z)/m-1;
+M1 = @(z) log(M(z)/m);
 f = fplot(M1,[0.8,1.2],'LineWidth',1);
 m = M1(1.2);
 yline(-m,'--');
 ylabel('log deviation')
 xlabel('TFP')
-xticks(1); 
-yticks([m -m]); yticklabels({'M','-M'})
+xticks([0.8 1 1.2]); 
+yticks([m -m]); yticklabels({'\Delta M','-\Delta M'})
 title('Change of mismatch level');
 
 saveas(gcf,FileName); close all;
@@ -218,9 +218,11 @@ hold on;
 plot(Simulation(:,1),Simulation(:,3),'LineWidth',1)
 hold on;
 plot(Simulation(:,1),Simulation(:,4),'LineWidth',1)
+hold on;
+plot(Simulation(:,1),Simulation(:,5),'LineWidth',1)
 xlim([0 max(Simulation(:,1))])
 xlabel('Change of unemployment insurance'); ylabel('Change of variables')
-legend('Unemployment rate','Labor force participation rate','Output')
+legend('Unemployment rate','Labor force participation rate','Output','Mismatch')
 saveas(gcf,FileName); 
 
 

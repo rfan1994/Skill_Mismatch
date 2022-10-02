@@ -62,8 +62,8 @@ end interface
     end select
 
     fgoodenough = 1d-3
-    ftolerabs = -huge(0d0)
-    ftolerrel = -huge(0d0)                      ! any negative value means no stopping
+    ftolerabs = 1d-3
+    ftolerrel = 1d-3                        ! any negative value means no stopping
     xtolerrel = 1d-3
     xtolerabs = 1d-3
     maxeval = 3000

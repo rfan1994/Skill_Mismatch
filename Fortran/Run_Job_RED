@@ -15,12 +15,12 @@ pwd
 
 
 
-# ===============================================================================================
-# Simulate
+# # ===============================================================================================
+# # Simulate
 
-echo -e "\e[1;94m $(date) \e[0m"
-cd ~/Documents/$(date +%Y%m%d)/Simulate
-pwd
-~/Documents/Skill_Mismatch/Simulation/Simulation
+# echo -e "\e[1;94m $(date) \e[0m"
+# cd ~/Documents/$(date +%Y%m%d)/Simulate
+# pwd
+# ~/Documents/Skill_Mismatch/Simulation/Simulation
 
 

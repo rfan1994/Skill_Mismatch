@@ -36,12 +36,12 @@ real(8) :: b_UI
 ! Parameters to calibrate
 real(8) :: beta_p, delta_p
 real(8) :: psi, lambda_e, kappa, alpha_u, alpha_o
-real(8) :: phi1, phi2, phi3, phi4                        ! Train, School, Adoption, Innovation
+real(8) :: phi1, phi2, phi3, phi4                               ! Train, School, Adoption, Innovation
 real(8) :: lambda_a, lambda_b, mu_a0, mu_b0, a_shock, b_shock
 real(8) :: phi1_new, phi2_new, phi3_new, phi4_new, mu_a0_new, mu_b0_new
 
 ! Grid points
-integer, parameter :: Na = 11, Nb = 9, Nz = 11, Nw = 101
+integer, parameter :: Na = 11, Nb = 11, Nz = 11, Nw = 101
 real(8), dimension(Na) :: a_grid, a_pdf, a_cdf
 real(8), dimension(Nb) :: b_grid, b_pdf, b_cdf
 real(8) :: pdf(Na,Nb)
@@ -79,7 +79,7 @@ real(8), dimension(Na,Nb,Nz) :: a_opt2, b_opt2
 ! ======================================================================
 
 ! Individial grid points
-integer, parameter :: Nhh = 5000
+integer, parameter :: Nhh = 10000
 
 ! Shocks
 real(8), dimension(Nhh) :: LF_ind, d_ind, d2_ind, fu_ind, fe_ind
@@ -126,7 +126,7 @@ real(8), dimension(iter_max) :: z_IR,                  &     ! Productivity shoc
                                 EU_endo_IR,            &     ! Endogenous separation
                                 EN_IR,                 &     ! EN transition
                                 UN_IR,                 &     ! UN+NN transition
-                                EE_IR,                 &     ! EE transition                             
+                                EE_IR,                 &     ! EE transition  
                                 Revenue_IR,            &     ! Total revenue
                                 Vacancy_e_IR,          &     ! Expected value of hiring E
                                 Vacancy_u_IR,          &     ! Expected value of hiring
