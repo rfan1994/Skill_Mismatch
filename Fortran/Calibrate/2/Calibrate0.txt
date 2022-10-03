@@ -1,0 +1,1 @@
+      number        b_UI       e_min    lambda_e         psi       kappa     alpha_u     alpha_o    lambda_a    lambda_b     a_shock     b_shock        phi1        phi2        phi3        phi4           a           b         L_N

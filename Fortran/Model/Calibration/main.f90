@@ -12,9 +12,9 @@ use My_Function
 use Value_Function
 use Simulation
     implicit none
-real(8), allocatable :: param_range(:,:), pguess(:)
-integer :: i, j
 
+integer :: i, j
+real(8) :: pguess(Nparam), param_range(2,Nparam)
     
     ! ======================================================================
     ! Input
@@ -24,18 +24,26 @@ integer :: i, j
         read(2,*) SMM_data
         read(2,*) SMM_weight
         SMM_weight = SMM_weight/sum(SMM_weight)
-        read(2,*) Param
-        read(2,*) param_flag
     close(2)
 
     ! Parameters
-    b_UI = 0.75d0
-    psi = Param(1); lambda_e = Param(2); kappa = Param(3); alpha_u = Param(4); alpha_o = Param(5)
-    lambda_a = Param(6); lambda_b = Param(7); a_shock = Param(8); b_shock = Param(9)
-    phi1 = Param(10); phi2 = Param(11); phi3 = Param(12); phi4 = Param(13)
-    mu_a0 = Param(14); mu_b0 = Param(15)
-    Nparam = sum(param_flag)
-    
+    pguess(1) = 0.75d0; param_range(1,1) = 0.5d0; param_range(2,1) = 1d0                ! b_UI
+    pguess(2) = 0.6d0; param_range(1,2) = 0.5d0; param_range(2,2) = 1d0                 ! e_min 
+    pguess(3) = 1.01d0; param_range(1,3) = 1d0; param_range(2,3) = 1.05d0               ! lambda_e	
+    pguess(4) = 0.3d0; param_range(1,4) = 0d0; param_range(2,4) = 5d0                   ! psi
+    pguess(5) = 0.6404d0; param_range(1,5) = 0d0; param_range(2,5) = 1d0                ! kappa	
+    pguess(6) = 3d0; param_range(1,6) = 1d0; param_range(2,6) = 5d0                     ! alpha_u	
+    pguess(7) = 4d0; param_range(1,7) = 1d0; param_range(2,7) = 5d0                     ! alpha_o	
+    pguess(8) = 3d0; param_range(1,8) = 2d0; param_range(2,8) = 5d0                     ! lambda_a	
+    pguess(9) = 6d0; param_range(1,9) = 3d0; param_range(2,9) = 10d0                    ! lambda_b	
+    pguess(10) = 0.1821d0; param_range(1,10) = 0.1d0; param_range(2,10) = 0.8d0         ! a_shock	
+    pguess(11) = 0.2839d0; param_range(1,11) = 0.1d0; param_range(2,11) = 0.8d0         ! b_shock	
+    pguess(12) = 10d0; param_range(1,12) = 5d0; param_range(2,12) = 20d0                ! phi1	
+    pguess(13) = 0d0; param_range(1,13) = 0d0; param_range(2,13) = 0d0                  ! phi2	
+    pguess(14) = 10d0; param_range(1,14) = 5d0; param_range(2,14) = 20d0                ! phi3	
+    pguess(15) = 0d0; param_range(1,15) = 0d0; param_range(2,15) = 0d0                  ! phi4
+    pguess(16) = 2.5d0; param_range(1,16) = 1.5d0; param_range(2,16) = 3d0              ! mu_b0
+
     call File_Create
 
     ! ======================================================================
@@ -47,32 +55,19 @@ integer :: i, j
     return_L0 = SMM_data(7); w_grow_in0 = SMM_data(8); w_grow_out0 = SMM_data(9)
     var_ab0 = SMM_data(10); corr_ab0 = SMM_data(11)
     train_revenues0 = SMM_data(12); R_D_revenues0 = SMM_data(13)
-   
-    allocate(param_range(2,Nparam), pguess(Nparam))
-    j = 1
-    do i = 1,Nparam_total
-        if (param_flag(i)==1) then
-            pguess(j) = Param(i)
-            if (i==3 .or. i==8 .or. i==9) then
-                param_range(1,j) = 0d0; param_range(2,j) = 1d0
-            else
-                param_range(1,j) = 0.5d0*Param(i); param_range(2,j) = 2d0*Param(i)
-            endif
-            j = j+1
-        endif
-    end do
 
     iunit = 0
-    call nlopt(5,pguess,param_range)
+    call nlopt(6,pguess,param_range)
 
 contains
 
 subroutine File_Create
     implicit none
     open(2, file='Calibrate0.txt', status='replace')
-        FMT = '(17A12)'
+        FMT = '(19A12)'
         write(2,FMT) 'number',                                                      &
-                     'psi', 'theta_e', 'kappa', 'alpha_u', 'alpha_o',               &
+                     'b_UI', 'e_min','lambda_e',                                    &
+                     'psi', 'kappa', 'alpha_u', 'alpha_o',                          &
                      'lambda_a', 'lambda_b', 'a_shock', 'b_shock',                  &
                      'phi1', 'phi2', 'phi3', 'phi4', 'a', 'b',                      &
                      'L_N'

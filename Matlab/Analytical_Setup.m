@@ -1,7 +1,7 @@
 clear all; close all; clc
 global folder2 size1 size2 size3 size4 position2 position3 position4 colors
 
-folder2 = '/Users/rongfan/Desktop/Skill_Mismatch Result/Latex/';
+folder2 = '/Users/rongfan/Desktop/Skill_Mismatch/Latex/';
 
 size1 = [0,0,300,200];
 

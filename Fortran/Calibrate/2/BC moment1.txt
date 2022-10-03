@@ -1,0 +1,1 @@
+      number         u_m      LFPR_m         f_m         d_m       Mis_m        EE_m

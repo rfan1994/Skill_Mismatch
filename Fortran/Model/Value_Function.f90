@@ -168,7 +168,6 @@ end subroutine Grid_Space
 
 subroutine Solve_Vu
 	implicit none
-    e_min = UN0**(1d0/lambda_e)*b_UI
     mu_e = e_min*lambda_e/(lambda_e-1d0)
     EV_n1 = (b_UI+e_min**lambda_e*b_UI**(1-lambda_e)/lambda_e)/(1d0-beta_p)
     V_u = b_UI+beta_p*EV_n1
