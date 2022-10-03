@@ -43,4 +43,4 @@ module load nlopt
 cd ~/Documents/Skill_Mismatch/Calibration
 make -f Makefile
 cd ~/Documents/$(date +%Y%m%d)
-Sbatch Run_Job_Carbonate
+qsub Run_Job_Carbonate
