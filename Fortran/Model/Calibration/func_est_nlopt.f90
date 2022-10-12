@@ -46,7 +46,7 @@ integer :: i, j
         FMT = '(5A10)'
         write(*,FMT) 'phi1', 'phi2', 'phi3', 'phi4', 'mu_b'
         FMT = '(5F10.2)'
-        write(*,FMT) phi1, phi2, phi3, phi4, mu_b
+        write(*,FMT) phi1, phi2, phi3, phi4, mu_b0
 
     call set_zero
     call VF(0)

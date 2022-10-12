@@ -53,7 +53,8 @@ integer :: iter
         step = 10; call Innovation(iter)
         step = 11; call Job_Finding_Rate(iter)
         step = 12; call Update_Distribution(iter)
-        step = 13; call New_Entry(iter)
+        step = 13; call Mismatch_measure(iter)
+        step = 14; call New_Entry(iter)
     end do
     
     ! Export_Result
@@ -358,9 +359,9 @@ integer, intent(in) :: iter
 real(8) :: y0, y1
 
     HH0 = HH1
-    EU_exo = 0d0; EU_endo = 0d0; Mismatch = 0d0
+    EU_exo = 0d0; EU_endo = 0d0
     call separate
-    u_IR(iter) = u; d_IR(iter) = d
+    d_IR(iter) = d
     EU_endo_IR(iter) = EU_endo
 
 contains
@@ -377,7 +378,6 @@ integer :: hhi
             V_abz_HH(hhi) = 0d0; EP_abz_HH(hhi) = 0d0; Prod_HH(hhi) = 0d0
             Disutility_HH(hhi) = 0d0; Wage_HH(hhi) = 0d0
             EU_endo = EU_endo+1d0
-            Mismatch = Mismatch+1d0
         elseif (d_ind(hhi)==1d0) then
             HH1(2,hhi) = 0d0
             V_abz_HH(hhi) = 0d0; EP_abz_HH(hhi) = 0d0; Prod_HH(hhi) = 0d0
@@ -385,9 +385,6 @@ integer :: hhi
             EU_exo = EU_exo+1d0
         endif
     enddo
-    y0 = dble(count(HH1(2,:)==0d0))
-    y1 = dble(count(HH1(2,:)>0d0))
-    u = y0/(y0+y1)
     y0 = dble(count(HH0(2,:)>0d0))
     d = (EU_exo+EU_endo)/y0
     EU_endo = EU_endo/y0
@@ -638,12 +635,14 @@ subroutine Update_Distribution(iter)
 integer, intent(in) :: iter
 integer :: hhi
 real(8) :: a, b, bp
+real(8) :: y0, y1
 real(8), dimension(Nhh) :: Wage_in1, Wage_in2, Wage_out1, Wage_out2
 
     EE = 0d0; train = 0d0; R_D1 = 0d0
     Wage_in1 = 0d0; Wage_in2 = 0d0
     Wage_out1 = 0d0; Wage_out2 = 0d0
     call update
+    u_IR(iter) = u
     EE_IR(iter) = EE; train_IR(iter) = train; R_D1_IR(iter) = R_D1
     w_grow_out_IR(iter) = w_grow_out; w_grow_in_IR(iter) = w_grow_in
 
@@ -665,8 +664,6 @@ real(8) :: V1, V2, V3, y0, w, d
             HH1(2,hhi) = b_ind(hhi)
             if (phi1>0) call training
             if (phi3>0) call adoption
-        else
-            Mismatch = Mismatch+1d0
         endif
         Vab_tmp = Disutility(:,:,z_point); Vab2_tmp = Disutility2(:,:,z_point)
         a = HH1(1,hhi); b = HH1(2,hhi)
@@ -700,11 +697,12 @@ real(8) :: V1, V2, V3, y0, w, d
         endif
     enddo
     
+    y0 = dble(count(HH1(2,:)==0d0))
+    y1 = dble(count(HH1(2,:)>0d0))
+    u = y0/(y0+y1)
     w_grow_out = (sum(Wage_out2)-sum(Wage_out1))/(sum(Wage_out1))
     w_grow_in = (sum(Wage_in2)-sum(Wage_in1))/(sum(Wage_in1))
     EE = EE/dble(Nhh)
-    y0 = dble(count(HH1(2,:)==0d0))
-    Mismatch = Mismatch/y0
 
 end subroutine update
 
@@ -733,6 +731,36 @@ end subroutine adoption
 end subroutine Update_Distribution
 
 
+! ======================================================================
+subroutine Mismatch_measure(iter)
+    implicit none
+integer, intent(in) :: iter
+real(8) :: y0
+    Mismatch = 0d0
+    call mismatching
+    Mismatch_IR(iter) = Mismatch
+
+contains
+
+subroutine mismatching
+    implicit none
+integer :: hhi, ai
+real(8) :: a, b1, b2
+    do ai = 1,Na
+        b1 = Match_b1b2(ai,1,z_point); b2 = Match_b1b2(ai,2,z_point)
+        Va_tmp(ai) = 1d0-Pareto_b_cdf(b2)+Pareto_b_cdf(b1)
+    enddo
+    call spline(Na,a_grid,Va_tmp,0d0,0d0,Va2_tmp)
+    do hhi = 1,Nhh
+        a = HH1(1,hhi)
+        call splint(Na,a_grid,Va_tmp,Va2_tmp,a,y0)
+        Mismatch = Mismatch+y0
+    end do
+    Mismatch = Mismatch/dble(Nhh)
+
+end subroutine mismatching
+
+end subroutine Mismatch_measure
 ! ======================================================================
 
 subroutine New_Entry(iter)

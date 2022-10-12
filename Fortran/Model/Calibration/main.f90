@@ -27,22 +27,22 @@ real(8) :: pguess(Nparam), param_range(2,Nparam)
     close(2)
 
     ! Parameters
-    pguess(1) = 0.75d0; param_range(1,1) = 0.5d0; param_range(2,1) = 1d0                ! b_UI
-    pguess(2) = 0.6d0; param_range(1,2) = 0.5d0; param_range(2,2) = 1d0                 ! e_min 
-    pguess(3) = 1.01d0; param_range(1,3) = 1d0; param_range(2,3) = 1.05d0               ! lambda_e	
-    pguess(4) = 0.3d0; param_range(1,4) = 0d0; param_range(2,4) = 5d0                   ! psi
-    pguess(5) = 0.6404d0; param_range(1,5) = 0d0; param_range(2,5) = 1d0                ! kappa	
-    pguess(6) = 3d0; param_range(1,6) = 1d0; param_range(2,6) = 5d0                     ! alpha_u	
-    pguess(7) = 4d0; param_range(1,7) = 1d0; param_range(2,7) = 5d0                     ! alpha_o	
-    pguess(8) = 3d0; param_range(1,8) = 2d0; param_range(2,8) = 5d0                     ! lambda_a	
-    pguess(9) = 6d0; param_range(1,9) = 3d0; param_range(2,9) = 10d0                    ! lambda_b	
-    pguess(10) = 0.1821d0; param_range(1,10) = 0.1d0; param_range(2,10) = 0.8d0         ! a_shock	
-    pguess(11) = 0.2839d0; param_range(1,11) = 0.1d0; param_range(2,11) = 0.8d0         ! b_shock	
-    pguess(12) = 10d0; param_range(1,12) = 5d0; param_range(2,12) = 20d0                ! phi1	
+    pguess(1) = 0.6975d0; param_range(1,1) = 0.65d0; param_range(2,1) = 0.7d0           ! b_UI
+    pguess(2) = 0.5469d0; param_range(1,2) = 0.5d0; param_range(2,2) = 0.6d0            ! e_min 
+    pguess(3) = 1.0396d0; param_range(1,3) = 1d0; param_range(2,3) = 1.05d0             ! lambda_e	
+    pguess(4) = 3.2221d0; param_range(1,4) = 3d0; param_range(2,4) = 3.5d0              ! psi
+    pguess(5) = 0.7085d0; param_range(1,5) = 0.6d0; param_range(2,5) = 0.8d0            ! kappa	
+    pguess(6) = 4.1982d0; param_range(1,6) = 3d0; param_range(2,6) = 5d0                ! alpha_u	
+    pguess(7) = 4.7002d0; param_range(1,7) = 3d0; param_range(2,7) = 5d0                ! alpha_o	
+    pguess(8) = 4.5142d0; param_range(1,8) = 3d0; param_range(2,8) = 5d0                ! lambda_a	
+    pguess(9) = 9.4699d0; param_range(1,9) = 9d0; param_range(2,9) = 10d0               ! lambda_b	
+    pguess(10) = 0.7759d0; param_range(1,10) = 0.1d0; param_range(2,10) = 0.8d0         ! a_shock	
+    pguess(11) = 0.7428d0; param_range(1,11) = 0.1d0; param_range(2,11) = 0.8d0         ! b_shock	
+    pguess(12) = 10.9125d0; param_range(1,12) = 10d0; param_range(2,12) = 20d0          ! phi1	
     pguess(13) = 0d0; param_range(1,13) = 0d0; param_range(2,13) = 0d0                  ! phi2	
-    pguess(14) = 10d0; param_range(1,14) = 5d0; param_range(2,14) = 20d0                ! phi3	
+    pguess(14) = 18.8252d0; param_range(1,14) = 10d0; param_range(2,14) = 20d0          ! phi3	
     pguess(15) = 0d0; param_range(1,15) = 0d0; param_range(2,15) = 0d0                  ! phi4
-    pguess(16) = 2.5d0; param_range(1,16) = 1.5d0; param_range(2,16) = 3d0              ! mu_b0
+    pguess(16) = 1.6945d0; param_range(1,16) = 1.5d0; param_range(2,16) = 2d0           ! mu_b0
 
     call File_Create
 
